@@ -8,11 +8,11 @@ Also, IDE projects does not support maven library management well.
 ## Maven dependencies
 In software engineering, it is very common to use dependencies other than the standard library.  
 
-There common libraries, used for specific things, like [gson](https://github.com/google/gson) Google JSON serialization/deserialization library.  
+There are libraries for many things, like [gson](https://github.com/google/gson) Google JSON serialization/deserialization library.  
 
 **Maven** helps you with this, by __automatically__ resolving, downloading required dependencies when you want to compile your project.
 
-> To better understand this theme, I advice setting the same environment up on your computer.  
+> To better understand this theme, I advice setting up the same environment on your computer.  
 
 > If you stuck, check TODO LINK [solutions](...) branch.
 
@@ -21,6 +21,7 @@ The time, I'm writing it, the biggest maven repository is [Maven Central](https:
 But its size makes it harder to understand.  
 
 Let's see a much smaller maven repository, my personal maven server: [maven.kosmx.dev](https://maven.kosmx.dev/)  
+***
 **What is a maven server anyway**  
 The maven server is just a simple, static website, hosting `.jar` files.  
  
@@ -29,7 +30,7 @@ Why these many folders in folders?!
 Because there are so many java artifacts (libraries), all of those has to be unique. (or the program won't know which of those is what you need)
 
 Every artifact has 3 property what will help find it:  
-`group-id`, `artifact id`, `version`
+`group id`, `artifact id`, `version`
 
 ***
 **Naming conventions**  
@@ -40,7 +41,7 @@ But I own [`kosmx.dev`](https://kosmx.dev/) domain too, so I can use `dev.kosmx`
 
 
 > and, if I'm doing this library as a part of a project, I can continue adding to the group-id.  
-`kosmx.github.io.edu.math`
+`io.github.kosmx.edu.math`
 
 
 Let's look into [maven.kosmx.dev/io/github/kosmx/edu/math/vector3d/](https://maven.kosmx.dev/io/github/kosmx/edu/math/vector3d/)  
@@ -64,7 +65,7 @@ Let's look into [maven-metadata.xml](https://maven.kosmx.dev/io/github/kosmx/edu
     </versioning>
 </metadata>
 ```
-This metadata helps tools to find artifacts and verify, but most tools does not break if maven-netadata.xml is missing.  
+This metadata help tools to find artifacts, but most tools does not break if maven-netadata.xml is missing.  
 Here we can see the groupId and artifactId, also the latest release and the list of all the versions available.  
 > Some maven servers has a human-friendly interface, where you can see versions without opening this file.
 
@@ -90,9 +91,9 @@ look into [1.0.0/](https://maven.kosmx.dev/io/github/kosmx/edu/math/vector3d/1.0
 Now, that we learned about these `maven repos`, lets create a project and use a dependency from some repo!
 
 You'll recognise a maven project if you find a `pom.xml` in the project root.  
-//TODO add link
+https://github.com/KosmX/java-toolchains/blob/main/maven-project/pom.xml  
 
-### what is a `pom.xml`?
+### What is a `pom.xml`?
 
 Let's open the pom.xml in the example!  
 (This has been generated usin IntelliJ generator)
@@ -123,7 +124,7 @@ This xml describes the project model: what is the id of our project, dependencie
 
 `dependencies` will describe the used dependencies, `repositories` will describe custom maven servers.  
 
-### basic maven commands
+### Basic maven commands
 `mvn clean` clear build cache, artifacts  
 
 `mvn compile` compile `.java` classes into `.class` files  
@@ -154,7 +155,7 @@ To add a dependency, create a `dependency` tag inside `dependencies` and inside 
             <version>2.10</version>
         </dependency>
 ```
-If you check maven central page, you'll see, it offers you this exact code snippet.
+If you check maven central page, it offers you this exact code snippet.
 
 > Now refresh your IDE project and hopefully gson will appear in external dependencies.
 
@@ -202,7 +203,7 @@ System.out.println(a.cross(b).length());
 
 You'll find a detailed documentation about maven on https://maven.apache.org/index.html
 
-## [Gralde](https://gradle.org/) (with Groovy DSL)
+## [Gradle](https://gradle.org/) (with Groovy DSL)
 Gradle is a modern, highly customizable, fast build tool.  
 You can write gradle build-scripts using [Groovy](https://groovy-lang.org/) or [Kotlin](https://kotlinlang.org/)  
 
@@ -212,7 +213,7 @@ You can write gradle build-scripts using [Groovy](https://groovy-lang.org/) or [
 You'll recognise a gradle project, if the sources root contains `settings.gradle` and `build.gradle`
 > or `settings.gradle.kts` and `build.gradle.kts` if gradle is using Kotlin buildscript
 
-### gradle usage
+### Gradle usage
 
 It is a common practice to include `gradlew` gradle wrapper in the repository.  
 The wrapper is a small script what will automatically download gradle if you want to use it.  
@@ -246,7 +247,7 @@ In groovy, function call brackets can be omitted if there is no nested function.
 > `println("test")` and `println "test"` are equivalent.  
 
 
-Both quotation mark `"` and postrophe `'` can be used for strings.  
+Both quotation mark `"` and apostrophe `'` can be used for strings.  
 The difference is, you can substitude only if you use quotation mark.  (yes, there is string substitution)
 ```groovy
 String stuff = "world!"
@@ -259,7 +260,7 @@ Unlike maven, you configure gradle using a program, called buildscript.
 
 This buildscript allows you to make custom steps in build (like replace version string in META-INF or rename assets).  
 
-(This template is generated usin IntelliJ)
+(This template is generated usin IntelliJ)  
 `settings.gradle`
 ```groovy
 rootProject.name = 'gradle-project'
@@ -288,11 +289,12 @@ test {
     useJUnitPlatform()
 }
 ```
-gradle is not a java specific tool, it can be used for other languages. 
+gradle is not a java specific tool, it can be used for other languages.  
+
 `plugin`: which plugins do you want to enable. `java-library`, `java` for java code, `maven-publish` to publish to maven server.
 > There are many custom plugins like `fabric-loom` which helps building Minecraft mods, but these are not built-in plugins, you'll need to set a repository in `settings.gradle`...
 
-`group` and `version`: the project group and versio ID
+`group` and `version`: the project group and version ID
 
 `repositories`: declare external repositories, `mavenCentral()` will add maven central
 
@@ -300,6 +302,7 @@ gradle is not a java specific tool, it can be used for other languages.
 
 `test`: configure test task using JUnit
 
+***
 ### Dependencies
 Dependencies can be declared in `dependencies` scope.
 
@@ -320,7 +323,7 @@ There are multiple dependency configurations built-in, but you can add more.
 `testImplementation`: same as implementation, but for testing only.  
 > and the other configurations has test only versions
 
-
+*** 
 **Let's add gson again**  
 Just add the following line into `dependencies`  
 `implementation 'com.google.code.gson:gson:2.10'`
@@ -330,7 +333,7 @@ Just add the following line into `dependencies`
 JsonObject obj = JsonParser.parseString("{\"str\": \"Hello gson!\"}").getAsJsonObject();
 System.out.println(obj.get("str").getAsString());
 ```
-
+*** 
 ### Repositories
 Let's see custom maven repos
 
@@ -370,7 +373,8 @@ There are pretty good guides in https://gradle.org/
 
 > https://github.com/johnrengelman/shadow one of the most useful gradle plugins.  
 
-> If you want to use Kotlin buildscript, first learn kotlin
+> If you want to use Kotlin buildscript, first learn kotlin https://kotlinlang.org/docs/getting-started.html  
+
 > https://github.com/KosmX/fabric-example-mod-kotlin This is an example Minecraft mod using some advanced gradle features and Kotlin. You can check it out.
 
 
