@@ -379,4 +379,4 @@ There are pretty good guides in https://gradle.org/
 
 ***
 ## explainer
-I created this because the university JAVA course does not teach about this *very important* thing.
+I created this because the university Java course does not teach about this *very important* thing.
