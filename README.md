@@ -14,7 +14,7 @@ There are libraries for many things, like [gson](https://github.com/google/gson)
 
 > To better understand this theme, I advice setting up the same environment on your computer.  
 
-> If you stuck, check TODO LINK [solutions](...) branch.
+> If you stuck, check [solution](https://github.com/KosmX/java-toolchains/tree/solution) branch.
 
 ### Maven repository (repo for short)
 The time, I'm writing it, the biggest maven repository is [Maven Central](https://search.maven.org/) with millions of artifacts.  
@@ -189,7 +189,7 @@ Add the `vector3d` package from earlier!
 > artifact id: `vector3d`  
 > version: `1.0.0`  
 
-> If you don't know what to write, you can find the solution in `solutions` branch!
+> If you don't know what to write, you can find the [solution](https://github.com/KosmX/java-toolchains/blob/1ed7fb8440a517b0015edd7210390336e8ab7224/maven-project/pom.xml#L27) in `solution` branch!
 
 Here is some test code
 ```java
@@ -359,7 +359,7 @@ Now test it, add the earlier seen `vector3d` library!
 > artifact id: `vector3d`  
 > version: `1.0.0`  
 
-> The solution is in `solutions` branch, check it only if you stuck!  
+> The [solution](https://github.com/KosmX/java-toolchains/blob/1ed7fb8440a517b0015edd7210390336e8ab7224/gradle-project/build.gradle#L22) is in `solution` branch, check it only if you stuck!  
 
 Now, test it!
 ```java
