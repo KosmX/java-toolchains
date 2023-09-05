@@ -378,5 +378,5 @@ There are pretty good guides in https://gradle.org/
 > https://github.com/KosmX/fabric-example-mod-kotlin This is an example Minecraft mod using some advanced gradle features and Kotlin. You can check it out.
 
 ***
-## explainer
+## why
 I created this because the university Java course does not teach about this *very important* thing.
